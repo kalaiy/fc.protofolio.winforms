@@ -104,7 +104,20 @@ namespace Fc.Protofolio.Winforms
             gcTranscation.ExportToXlsx(path);
 
             Process.Start(path);
-        } 
+        }
+
         #endregion
+
+        private async void btnRefresh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                await LoadOrders();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message, "An Error Occured");
+            }
+        }
     }
 }
